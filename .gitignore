@@ -1,0 +1,15 @@
+/.west/
+/.venv/
+/zephyr/
+/modules/
+/tools/
+/bootloader/
+build/
+*.pyc
+__pycache__/
+.DS_Store
+/.cache/
+
+# design and working notes are kept outside the repository
+/CLAUDE.md
+/SPI-FLASHER.md

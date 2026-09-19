@@ -1,0 +1,10 @@
+# Copyright (c) 2026 John Crispin <john@phrozen.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
+board:
+  name: weact_stm32g474_core
+  full_name: STM32G474 Core Board
+  vendor: weact
+  socs:
+    - name: stm32g474xx

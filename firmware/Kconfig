@@ -1,0 +1,47 @@
+# Copyright (c) 2026 John Crispin <john@phrozen.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
+mainmenu "SPI flasher probe"
+
+config SPI_FLASHER_PIN_TEST
+	bool "PIN_TEST opcode, reads the SPI pins as biased GPIO inputs"
+	default y
+	select PINCTRL_NON_STATIC
+	help
+	  Needed to re-apply the SPI pin configuration after probing the pins,
+	  which requires the pinctrl config to be externally visible.
+
+config SPI_FLASHER_USB_OUT_DEPTH
+	int "Request buffers, which bounds how far ahead the host may queue"
+	default 4
+
+config SPI_FLASHER_USB_IN_DEPTH
+	int "Reply buffers, which bounds how many replies may be in flight"
+	default 4
+
+config SPI_FLASHER_XFER_MAX
+	int "Largest SPI payload accepted in one direction of one CS frame"
+	default 4608
+
+config SPI_FLASHER_USB_VID
+	hex "USB vendor ID"
+	default 0x2fe3
+
+config SPI_FLASHER_USB_PID
+	hex "USB product ID"
+	default 0x0001
+
+config SPI_FLASHER_USB_MANUFACTURER
+	string "USB manufacturer string"
+	default "spi-flasher"
+
+config SPI_FLASHER_USB_PRODUCT
+	string "USB product string"
+	default "SPI flasher probe"
+
+config SPI_FLASHER_USB_MAX_POWER
+	int "USB bMaxPower in 2 mA units"
+	default 125
+
+source "Kconfig.zephyr"

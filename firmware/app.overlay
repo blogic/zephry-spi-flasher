@@ -1,0 +1,33 @@
+/*
+ * Copyright (c) 2026 John Crispin <john@phrozen.org>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#include <zephyr/dt-bindings/gpio/gpio.h>
+#include <zephyr/dt-bindings/dma/stm32_dma.h>
+
+&dma1 {
+	status = "okay";
+};
+
+&dmamux1 {
+	status = "okay";
+};
+
+&spi2 {
+	status = "okay";
+	pinctrl-0 = <&spi2_sck_pb13 &spi2_miso_pb14 &spi2_mosi_pb15>;
+	pinctrl-names = "default";
+	cs-gpios = <&gpiob 12 GPIO_ACTIVE_LOW>;
+	dmas = <&dmamux1 0 13 (STM32_DMA_PERIPH_TX | STM32_DMA_PRIORITY_HIGH)>,
+	       <&dmamux1 1 12 (STM32_DMA_PERIPH_RX | STM32_DMA_PRIORITY_HIGH)>;
+	dma-names = "tx", "rx";
+
+	target_external: spi-target@0 {
+		compatible = "vnd,spi-target";
+		reg = <0>;
+		spi-max-frequency = <DT_FREQ_M(20)>;
+	};
+};
+

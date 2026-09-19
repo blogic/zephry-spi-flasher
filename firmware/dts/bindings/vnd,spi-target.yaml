@@ -1,0 +1,12 @@
+# Copyright (c) 2026 John Crispin <john@phrozen.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  Flash chip target driven by the serprog firmware. The firmware only needs the
+  bus, the chip select and the default clock rate from this node; all chip
+  knowledge stays on the host.
+
+compatible: "vnd,spi-target"
+
+include: spi-device.yaml

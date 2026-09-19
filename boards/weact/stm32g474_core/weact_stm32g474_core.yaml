@@ -1,0 +1,22 @@
+# Copyright (c) 2026 John Crispin <john@phrozen.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
+identifier: weact_stm32g474_core
+name: WeAct Studio STM32G474 Core Board
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+ram: 128
+flash: 512
+supported:
+  - gpio
+  - spi
+  - uart
+  - usb_device
+  - counter
+  - dma
+  - watchdog
+vendor: weact
